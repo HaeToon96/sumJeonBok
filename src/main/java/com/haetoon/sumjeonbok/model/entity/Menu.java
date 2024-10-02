@@ -16,7 +16,8 @@ import java.util.List;
 public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idx;
+    @Column(name ="MENU_ID")
+    private long id;
     private String name;
     @OneToMany(mappedBy = "menu" ,cascade = CascadeType.ALL)
     private List<MenuInfo>menuInfoList = new ArrayList<>();
