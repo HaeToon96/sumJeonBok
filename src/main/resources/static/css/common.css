@@ -1,0 +1,32 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.view-area{
+    border:1px solid #ccc;
+    width:1200px;
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+}
+.main-room1{
+    flex:1;
+    padding: 12px;
+    border:1px solid #ccc;
+}
+.main-room2{
+    flex:1;
+    padding: 12px;
+    border:1px solid #ccc;
+}
+.main-room3{
+    flex:1;
+    padding: 12px;
+    border:1px solid #ccc;
+}
+.room-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
