@@ -8,7 +8,7 @@
         </div>
         <div class="order-table-area">
             <div class="table-title">
-                <h1>1번테이블 주문 목록</h1>
+                <h1 >1번 테이블 주문 목록</h1>
             </div>
             <table class="order-table">
                 <thead>
@@ -40,10 +40,17 @@
 </body>
 <script>
     $(document).ready(function (){
+        const path = window.location.pathname;
+        const tableId = path.split("/").pop();
+        const orderTitle = $(".table-title h1");
+        orderTitle.empty();
+        const title = tableId + " 번 테이블 주문 목록"
+        orderTitle.append(title);
+
         $(document).on("click",".add",function (){
             const path = window.location.pathname;
             const tableId = path.split("/").pop();
-            console.log("tableId =="+tableId+"menu=="+$(this).val()+"plus");
+
             $.ajax({
                 url: "/order",
                 method : "POST",
@@ -62,7 +69,7 @@
         $(document).on("click",".minus",function (){
             const path = window.location.pathname;
             const tableId = path.split("/").pop();
-            console.log("tableId =="+tableId+"menu=="+$(this).val()+"minus");
+
             $.ajax({
                 url: "/cancel",
                 method : "POST",
