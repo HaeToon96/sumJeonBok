@@ -32,6 +32,8 @@ class SumJeonBokApplicationTests {
     private MenuRepository menuRepository;
     @Autowired
     private MenuInfoRepository menuInfoRepository;
+    @Autowired
+    private StatusRepository statusRepository;
 
     @Order(1)
     @Test
@@ -336,5 +338,21 @@ class SumJeonBokApplicationTests {
         MenuInfo menuInfo11 = menuInfoRepository.findByMenuAndTypeAndSize(menu9, drink, normal).orElseThrow();
         assertEquals(3000, menuInfo11.getPrice(), "'콜라'의 '기본' 크기 가격은 3000이어야 합니다.");
     }
+    @Order(10)
+    @Test
+    void insertStatus(){
+        Status status1 = new Status();
+        status1.setName("결제전");
+        statusRepository.save(status1);
+        Status status2 = new Status();
+        status2.setName("결제후");
+        statusRepository.save(status2);
+    }
+    @Order(11)
+    @Test
+    void statusInsertTest(){
+        Status no = statusRepository.findByName("결제전").orElseThrow();
+        Status yes = statusRepository.findByName("결제후").orElseThrow();
 
+    }
 }

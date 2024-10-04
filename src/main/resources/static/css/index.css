@@ -1,0 +1,64 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    margin: 0;
+    font-size: 72px;
+}
+.view-area{
+    border:1px solid #ccc;
+    width:1200px;
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+}
+.main-room1{
+    flex:1;
+    padding: 12px;
+    border:1px solid #ccc;
+}
+.main-room2{
+    flex:1;
+    padding: 12px;
+    border:1px solid #ccc;
+}
+.main-room3{
+    flex:1;
+    padding: 12px;
+    border:1px solid #ccc;
+}
+.room-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:96px;
+    border-radius: 16px;
+    border:1px solid #ccc;
+    margin-bottom: 16px;
+}
+.table-area{
+    height:calc(100% - 128px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.room-table{
+    flex:1;
+    border:1px solid #ccc;
+    height:100%;
+    border-radius: 16px;
+    margin-right: 32px;
+}
+.room-table a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 72px;
+}

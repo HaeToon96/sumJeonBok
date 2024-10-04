@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -13,7 +16,8 @@ import lombok.ToString;
 public class MenuInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idx;
+    @Column(name= "MENU_INFO_ID")
+    private long id;
     private int cost;
     private int price;
     @ManyToOne
@@ -25,7 +29,8 @@ public class MenuInfo {
     @ManyToOne
     @JoinColumn( name = "SIZE_ID")
     private Size size;
-
+    @OneToMany(mappedBy = "menuInfo",cascade = CascadeType.ALL)
+    private List<Order>orderList=new ArrayList<>();
     public MenuInfo() {
     }
 @Builder
