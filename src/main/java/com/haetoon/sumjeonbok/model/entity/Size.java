@@ -1,9 +1,9 @@
 package com.haetoon.sumjeonbok.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,6 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@ToString
 public class Size {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +19,7 @@ public class Size {
     private long id;
     @Column(name = "MENU_SIZE")
     private String name;
+    @JsonIgnore
     @OneToMany(mappedBy = "size",cascade = CascadeType.ALL)
     private List<MenuInfo>menuInfoList = new ArrayList<>();
 }

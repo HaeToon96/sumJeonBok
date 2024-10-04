@@ -1,14 +1,15 @@
 package com.haetoon.sumjeonbok.model.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
-@ToString
 @Table(name = "MyOrder")
 public class Order {
 
@@ -21,7 +22,7 @@ public class Order {
     @Column(name = "TOTAL_PRICE")
     private int totalPrice;
     @Column(name = "ORDER_DATE")
-    private String orderDate;
+    private LocalDateTime orderDate;
     @ManyToOne
     @JoinColumn(name = "ROOM_TABLE_ID")
     private RoomTable roomTable;
@@ -31,4 +32,17 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "STATUS_ID")
     private Status status;
+
+    public Order() {
+    }
+
+    @Builder
+    public Order(int quantity, int totalPrice, LocalDateTime orderDate, RoomTable roomTable, MenuInfo menuInfo, Status status) {
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
+        this.orderDate = orderDate;
+        this.roomTable = roomTable;
+        this.menuInfo = menuInfo;
+        this.status = status;
+    }
 }

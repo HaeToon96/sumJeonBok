@@ -16,48 +16,103 @@
                         <th>메뉴 명</th>
                         <th>크기</th>
                         <th>수량</th>
-                        <th>금액</th>
+                        <th>가격</th>
                         <th>증감</th>
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td><button class="btn btn-outline-primary">+</button><button class="btn btn-outline-primary">-</button></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td><button class="btn btn-outline-primary">+</button><button class="btn btn-outline-primary">-</button></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td><button class="btn btn-outline-primary">+</button><button class="btn btn-outline-primary">-</button></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td><button class="btn btn-outline-primary">+</button><button class="btn btn-outline-primary">-</button></td>
+                <tr th:each="order : ${orderList}">
+                    <td th:text="${order.menuInfo.menu.name}">1</td>
+                    <td th:text="${order.menuInfo.size.name}">1</td>
+                    <td th:text="${order.quantity}">0</td>
+                    <td th:text="${order.totalPrice}">0</td>
+                    <td><button class="btn btn-outline-primary add" th:value="${order.menuInfo.id}">+</button><button class="btn btn-outline-primary minus" th:value="${order.menuInfo.id}">-</button></td>
                 </tr>
                 </tbody>
             </table>
             <div class="table-bottom">
                 <div class="bottom-right-end">
-                    <button class="btn btn-outline-primary">결제완료</button>
+                    <button class="btn btn-outline-primary" id="reset">결제완료</button>
                 </div>
             </div>
-
         </div>
     </div>
 </body>
+<script>
+    $(document).ready(function (){
+        $(document).on("click",".add",function (){
+            const path = window.location.pathname;
+            const tableId = path.split("/").pop();
+            console.log("tableId =="+tableId+"menu=="+$(this).val()+"plus");
+            $.ajax({
+                url: "/order",
+                method : "POST",
+                data : {
+                    tableId : tableId,
+                    menuId : $(this).val()
+                },
+                success : function (response){
+                    updateOrderTable(response)
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error occurred:", xhr.responseText);
+                }
+            })
+        })
+        $(document).on("click",".minus",function (){
+            const path = window.location.pathname;
+            const tableId = path.split("/").pop();
+            console.log("tableId =="+tableId+"menu=="+$(this).val()+"minus");
+            $.ajax({
+                url: "/cancel",
+                method : "POST",
+                data : {
+                    tableId : tableId,
+                    menuId : $(this).val()
+                },
+                success : function (response){
+                    updateOrderTable(response)
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error occurred:", xhr.responseText);
+                }
+            })
+        })
+    })
+    function updateOrderTable(orderList){
+        const tableBody = $(".order-table tbody");
+        tableBody.empty();
+
+        orderList.forEach(function (order){
+            const row = '<tr>' +
+                '<td>' + order.menuInfo.menu.name + '</td>' +
+                '<td>' + order.menuInfo.size.name + '</td>' +
+                '<td>' + order.quantity + '</td>' +
+                '<td>' + order.totalPrice + '</td>' +
+                '<td>' +
+                '<button class="btn btn-outline-primary add" value="' + order.menuInfo.id + '">+</button>' +
+                '<button class="btn btn-outline-primary minus" value="' + order.menuInfo.id + '">-</button>' +
+                '</td>' +
+                '</tr>';
+            tableBody.append(row);
+        })
+    }
+    $(document).on("click","#reset",function (){
+        const path = window.location.pathname;
+        const tableId = path.split("/").pop();
+        $.ajax({
+            url: "/reset",
+            method : "POST",
+            data : {
+                tableId : tableId
+            },
+            success : function (response){
+                updateOrderTable(response)
+            },
+            error: function (xhr, status, error) {
+                console.error("Error occurred:", xhr.responseText);
+            }
+        })
+    })
+</script>
 </html>

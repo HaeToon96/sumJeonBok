@@ -42,8 +42,34 @@
     margin-bottom: 16px;
     th{
         border:1px solid #ccc;
+        font-size: 48px;
     }
     td{
         border:1px solid #ccc;
+        font-size: 48px;
+        overflow: hidden;
     }
+    button{
+        font-size:48px;
+        width:50%;
+    }
+}
+.order-table th:nth-child(1), .order-table td:nth-child(1) {
+    width: 25%;
+}
+
+.order-table th:nth-child(2), .order-table td:nth-child(2) {
+    width: 10%;
+}
+
+.order-table th:nth-child(3), .order-table td:nth-child(3) {
+    width: 10%;
+}
+
+.order-table th:nth-child(4), .order-table td:nth-child(4) {
+    width: 35%;
+}
+
+.order-table th:nth-child(5), .order-table td:nth-child(5) {
+    width: 20%;
 }

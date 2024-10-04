@@ -1,9 +1,9 @@
 package com.haetoon.sumjeonbok.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,6 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@ToString
 public class RoomTable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +22,7 @@ public class RoomTable {
     @ManyToOne
     @JoinColumn(name = "TABLE_ID")
     private MyTable myTable;
+    @JsonIgnore
     @OneToMany(mappedBy = "roomTable", cascade = CascadeType.ALL)
     private List<Order> orderList=new ArrayList<>();
 }

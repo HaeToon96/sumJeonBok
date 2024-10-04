@@ -1,9 +1,9 @@
 package com.haetoon.sumjeonbok.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,6 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@ToString
 public class MyTable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -19,6 +18,7 @@ public class MyTable {
     private long id;
     @Column(name = "TABLE_NUMBER")
     private int number;
+    @JsonIgnore
     @OneToMany(mappedBy = "myTable",cascade = CascadeType.ALL)
     private List<RoomTable> roomTableList = new ArrayList<>();
 

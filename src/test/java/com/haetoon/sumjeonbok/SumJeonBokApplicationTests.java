@@ -81,7 +81,7 @@ class SumJeonBokApplicationTests {
     }
     @Order(4)
     @Test
-    void insertRoomTableCheck(){
+    void checkInsertRoomTable(){
         Room livingRoom = roomRepository.findByName("거실").orElseThrow();
         Room frontRoom = roomRepository.findByName("앞방").orElseThrow();
         Room sideRoom = roomRepository.findByName("옆방").orElseThrow();
@@ -279,7 +279,7 @@ class SumJeonBokApplicationTests {
     }
     @Order(9)
     @Test
-    void insertMenuInfoCheck() {
+    void checkInsertMenuInfo() {
         // Size와 Type, Menu 엔티티를 데이터베이스에서 불러오기
         Size big = sizeRepository.findByName("대").orElseThrow();
         Size middle = sizeRepository.findByName("중").orElseThrow();
