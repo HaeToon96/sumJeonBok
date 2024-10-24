@@ -31,7 +31,49 @@
                 </tbody>
             </table>
             <div class="table-bottom">
-                    <button class="btn btn-outline-primary reset-btn" id="reset">결제완료</button>
+                    <button class="btn btn-outline-primary reset-btn" type="button" data-bs-toggle="modal" data-bs-target="#purchaseModal">결제</button>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="purchaseModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>메뉴 명</th>
+                                    <th>크기</th>
+                                    <th>수량</th>
+                                    <th>가격</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>4</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                            <h1>총액 0</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="reset" data-bs-dismiss="modal">결제 완료</button>
+                </div>
             </div>
         </div>
     </div>

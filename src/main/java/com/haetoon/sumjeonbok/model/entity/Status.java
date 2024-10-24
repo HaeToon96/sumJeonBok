@@ -20,5 +20,5 @@ public class Status {
     private String name;
     @JsonIgnore
     @OneToMany(mappedBy = "status",cascade = CascadeType.ALL)
-    private List<Order> orderList = new ArrayList<>();
+    private List<OrderLog> orderLogList = new ArrayList<>();
 }
