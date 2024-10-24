@@ -14,18 +14,39 @@ h1{
     display: flex;
     flex-direction: column;
 }
-.main-room1{
+.main-top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex:1;
+    padding: 12px;
+    border:1px solid #ccc;
+}
+.main-top-option{
+    flex:1;
+    height:100%;
+    border-radius: 16px;
+    border:1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-top-option a{
+    text-decoration: none;
+    font-size: 64px;
+}
+.main-room1{
+    flex:6;
     padding: 12px;
     border:1px solid #ccc;
 }
 .main-room2{
-    flex:1;
+    flex:6;
     padding: 12px;
     border:1px solid #ccc;
 }
 .main-room3{
-    flex:1;
+    flex:6;
     padding: 12px;
     border:1px solid #ccc;
 }

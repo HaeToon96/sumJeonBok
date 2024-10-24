@@ -11,7 +11,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MenuService {
     private final MenuInfoRepository menuInfoRepository;
-    public List<MenuInfo> firstOrder(){
-        return menuInfoRepository.findAll();
+    public List<MenuInfo> getAllMenuInfo(){
+        List<MenuInfo>menuInfoList = menuInfoRepository.findAll();
+        return menuInfoList;
     }
 }

@@ -26,14 +26,12 @@
                     <td th:text="${order.menuInfo.size.name}">1</td>
                     <td th:text="${order.quantity}">0</td>
                     <td th:text="${order.totalPrice}">0</td>
-                    <td><button class="btn btn-outline-primary add" th:value="${order.menuInfo.id}">+</button><button class="btn btn-outline-primary minus" th:value="${order.menuInfo.id}">-</button></td>
+                    <td><button class="btn btn-outline-primary add countbtn" th:value="${order.menuInfo.id}">+</button><button class="btn btn-outline-primary minus countbtn" th:value="${order.menuInfo.id}">-</button></td>
                 </tr>
                 </tbody>
             </table>
             <div class="table-bottom">
-                <div class="bottom-right-end">
                     <button class="btn btn-outline-primary reset-btn" id="reset">결제완료</button>
-                </div>
             </div>
         </div>
     </div>
@@ -97,8 +95,8 @@
                 '<td>' + order.quantity + '</td>' +
                 '<td>' + order.totalPrice + '</td>' +
                 '<td>' +
-                '<button class="btn btn-outline-primary add" value="' + order.menuInfo.id + '">+</button>' +
-                '<button class="btn btn-outline-primary minus" value="' + order.menuInfo.id + '">-</button>' +
+                '<button class="btn btn-outline-primary add countbtn" value="' + order.menuInfo.id + '">+</button>' +
+                '<button class="btn btn-outline-primary minus countbtn" value="' + order.menuInfo.id + '">-</button>' +
                 '</td>' +
                 '</tr>';
             tableBody.append(row);

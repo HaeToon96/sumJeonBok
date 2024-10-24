@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragment/head}"></head>
+<body>
+<div class="table-view">
+    <div class="table-top">
+        <a href="/" th:href="@{/}">홈으로</a>
+    </div>
+    <div class="menu-table-area">
+        <div class="table-title">
+            <h1>메뉴 현황</h1>
+        </div>
+        <table class="menu-table">
+            <thead>
+            <tr>
+                <th>메뉴 명</th>
+                <th>크기</th>
+                <th>원가</th>
+                <th>판매가</th>
+                <th>수정</th>
+                <th>삭제</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="list : ${menuList}">
+                <td th:text="${list.menu.name}">1</td>
+                <td th:text="${list.size.name}">2</td>
+                <td th:text="${list.cost}">3</td>
+                <td th:text="${list.price}">4</td>
+                <td><button class="btn btn-outline-primary updateMenuBtn">수정</button></td>
+                <td><button class="btn btn-outline-danger deleteMenuBtn">삭제</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
